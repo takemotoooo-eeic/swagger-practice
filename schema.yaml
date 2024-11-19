@@ -1,0 +1,50 @@
+openapi: 3.0.3
+
+info:
+  title: "Sample API"
+  version: "1.0.0"
+
+paths:
+  {}
+
+components:
+  schemas:
+    SampleInt32:
+      type: integer
+      format: int32
+    SampleDateString:
+      type: string
+      format: date  
+    SampleIint:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: false
+      maximum: 100
+      exclusiveMaximum: true
+    SampleString:
+      type: string
+      nullable: true
+      minLength: 10
+      maxLength: 20
+    SampleBoolean:
+      type: boolean
+    SampleObject:
+      type: object
+      properties:
+        shop:
+          type: object
+          properties:
+            name:
+              type: string
+            place:
+              type: string
+        reviews:
+          type: array
+          items:
+            type: object
+            properties:
+              score:
+                type: integer
+                enum: [1, 2, 3, 4, 5] 
+              comment:
+                type: string

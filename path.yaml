@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Shop Review API
+  version: 1.0.0
+
+paths:
+  /shops/{shop_id}/reviews:
+    get:
+      summary: Get specified shop reviews
+      description: {description}: Get specified shop reviews
+      tags: [shops]
+      deprecated: true
+      parameters:
+        - in: path
+          name: shop_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success operation

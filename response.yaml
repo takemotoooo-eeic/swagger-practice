@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Shop Review API
+  version: 1.0.0
+
+paths:
+  /shops/{shopId}/reviews:
+    post:
+      summary: Create review
+      tags: [shops]
+      deprecated: false
+      parameters:
+        - name: shopId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Content of review
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                score:
+                  type: integer
+                  description: Rating of the shop
+                  example: 3
+                comment:
+                  type: string
+                  description: Comment of the shop
+                  example: Delicious
+      responses:
+        '201':
+          description: Success operation
+          headers:
+            Location:
+              description: New URL of the created review
+              schema:
+                type: string
+                format: url
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 400
+                  type:
+                    type: string
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        field:
+                          type: string
+                        code:
+                          type: string
